@@ -11,8 +11,15 @@
     <PackageReference Include="CoreCodedChatbot.Database" Version="1.0.982" />
     <PackageReference Include="CoreCodedChatbot.Logging" Version="1.0.743" />
     <PackageReference Include="CoreCodedChatbot.Secrets" Version="1.0.733" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.10" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="PrintfulLib" Version="1.0.830" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
