@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodedGhost.MerchApi", "CodedGhost.MerchApi\CodedGhost.MerchApi.csproj", "{A37081FB-7FED-4218-A78D-DD5BB66A4201}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A37081FB-7FED-4218-A78D-DD5BB66A4201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A37081FB-7FED-4218-A78D-DD5BB66A4201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A37081FB-7FED-4218-A78D-DD5BB66A4201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A37081FB-7FED-4218-A78D-DD5BB66A4201}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B4349C9-D4AF-47C2-BE3B-D718B07398D3}
+	EndGlobalSection
+EndGlobal
