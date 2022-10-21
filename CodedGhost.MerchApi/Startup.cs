@@ -1,15 +1,9 @@
 ﻿using CodedGhost.Config;
 using CoreCodedChatbot.Config;
 using CoreCodedChatbot.Database;
-using CoreCodedChatbot.Database.Context.Interfaces;
-using CoreCodedChatbot.Database.Context;
 using CoreCodedChatbot.Logging;
 using CoreCodedChatbot.Secrets;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
 
 namespace CodedGhost.MerchApi;
 
@@ -33,32 +27,38 @@ public class Startup
         services.AddSingleton<ISecretService, AzureKeyVaultService>(provider => secretService);
 
         services
-            .AddPrintfulClient(secretService);
+            .AddPrintfulClient(secretService)
+            .AddApplicationServices();
 
         services.AddRouting();
 
         services.AddControllers().AddNewtonsoftJson(x =>
             x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
+        services.AddControllers();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
     }
 
     public void Configure(IApplicationBuilder app, IHostEnvironment env, IServiceProvider serviceProvider)
     {
-        using (var context = (ChatbotContext)serviceProvider.GetService<IChatbotContextFactory>().Create())
-        {
-            context.Database.Migrate();
-        }
-
         app.UseMiddleware<ErrorHandlingMiddleware>();
 
         if (env.IsDevelopment() || env.IsEnvironment("Local"))
         {
-            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI();
         }
-
+        
         app.UseRouting();
 
         app.UseAuthentication();
         app.UseAuthorization();
+
+        app.UseCors(builder => builder.WithOrigins("https://merch.codedghost.com", "http://localhost:3000")
+            .AllowAnyHeader()
+            .WithMethods("GET", "POST")
+            .AllowCredentials());
 
         app.UseEndpoints(endpoints =>
         {
