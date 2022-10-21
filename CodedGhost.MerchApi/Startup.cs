@@ -31,6 +31,14 @@ public class Startup
             .AddApplicationServices();
 
         services.AddRouting();
+        services.AddCors(options => {
+            options.AddPolicy(
+                name: "merchUiCors",
+                builder => builder.WithOrigins("https://merch.codedghost.com", "http://localhost:3000", "http://merch.codedghost.com")
+                    .AllowAnyHeader()
+                    .WithMethods("GET", "POST")
+                    .AllowCredentials());
+            });
 
         services.AddControllers().AddNewtonsoftJson(x =>
             x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
@@ -55,10 +63,7 @@ public class Startup
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.UseCors(builder => builder.WithOrigins("https://merch.codedghost.com", "http://localhost:3000", "http://merch.codedghost.com")
-            .AllowAnyHeader()
-            .WithMethods("GET", "POST")
-            .AllowCredentials());
+        app.UseCors("merchUiCors");
 
         app.UseEndpoints(endpoints =>
         {

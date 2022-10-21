@@ -14,7 +14,7 @@ public class ProductController : Controller
         _productService = productService;
     }
 
-    [HttpPost]
+    [HttpPost("")]
     public async Task<IActionResult> GetProducts([FromBody] ProductsRequest request)
     {
         if (request?.CategoryIds == null) return BadRequest();
