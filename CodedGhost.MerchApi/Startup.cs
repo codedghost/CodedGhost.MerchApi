@@ -33,8 +33,6 @@ public class Startup
         services.AddSingleton<ISecretService, AzureKeyVaultService>(provider => secretService);
 
         services
-            .AddDbContextFactory()
-            .AddChatbotNLog()
             .AddPrintfulClient(secretService);
 
         services.AddRouting();
