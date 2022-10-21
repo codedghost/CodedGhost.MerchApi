@@ -36,7 +36,7 @@ public class Startup
                 name: "merchUiCors",
                 builder => builder.WithOrigins("https://merch.codedghost.com", "http://localhost:3000", "http://merch.codedghost.com")
                     .AllowAnyHeader()
-                    .WithMethods("GET", "POST")
+                    .AllowAnyMethod()
                     .AllowCredentials());
             });
 
