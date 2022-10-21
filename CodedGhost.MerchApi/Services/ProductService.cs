@@ -16,7 +16,10 @@ public class ProductService : IProductService
 
     public async Task<SyncProduct[]> GetProducts(int[] filterCategoryIds)
     {
-        var productResponse = await _printfulClient.GetProducts(new GetProductsRequest()).ConfigureAwait(false);
+        var productResponse = await _printfulClient.GetProducts(new GetProductsRequest
+        {
+            CategoryIds = filterCategoryIds
+        }).ConfigureAwait(false);
 
         return productResponse.Result;
     }
