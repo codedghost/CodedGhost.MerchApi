@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace CodedGhost.MerchApi.Controllers;
 
 [Route("[controller]")]
-[EnableCors("merchUiCors")]
 public class ProductController : Controller
 {
     private readonly IProductService _productService;
