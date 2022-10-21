@@ -1,9 +1,11 @@
 ﻿using CodedGhost.MerchApi.Interfaces.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodedGhost.MerchApi.Controllers;
 
 [Route("[controller]")]
+[EnableCors("merchUiCors")]
 public class CategoryController : Controller
 {
     private readonly ICategoryService _categoryService;
