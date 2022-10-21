@@ -55,7 +55,7 @@ public class Startup
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.UseCors(builder => builder.WithOrigins("https://merch.codedghost.com", "http://localhost:3000")
+        app.UseCors(builder => builder.WithOrigins("https://merch.codedghost.com", "http://localhost:3000", "http://merch.codedghost.com")
             .AllowAnyHeader()
             .WithMethods("GET", "POST")
             .AllowCredentials());
