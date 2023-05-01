@@ -21,7 +21,8 @@ public class Startup
         var secretService = new AzureKeyVaultService(
             configService.Get<string>("KeyVaultAppId"),
             configService.Get<string>("KeyVaultCertThumbPrint"),
-            configService.Get<string>("KeyVaultBaseUrl"));
+            configService.Get<string>("KeyVaultBaseUrl"),
+            configService.Get<string>("ActiveDirectoryTenantId"));
 
         secretService.Initialize().Wait();
         services.AddSingleton<ISecretService, AzureKeyVaultService>(provider => secretService);

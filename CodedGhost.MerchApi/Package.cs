@@ -10,7 +10,7 @@ public static class Package
 {
     public static IServiceCollection AddPrintfulClient(this IServiceCollection services, ISecretService secretService)
     {
-        var printfulClient = new PrintfulClient(secretService.GetSecret<string>("PrintfulAPIKey"));
+        var printfulClient = new PrintfulClient(secretService.GetSecret<string>("PrintfulPrivateKey"));
 
         services.AddSingleton<IPrintfulClient>(printfulClient);
 
