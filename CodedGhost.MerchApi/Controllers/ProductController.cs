@@ -24,4 +24,14 @@ public class ProductController : Controller
 
         return Json(products);
     }
+
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetProduct(int id)
+    {
+        if (id == 0) return BadRequest();
+
+        var product = await _productService.GetProduct(id);
+
+        return Json(product);
+    }
 }
